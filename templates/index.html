@@ -29,46 +29,21 @@
             <h3 class="text-muted">Python Recommender Engine</h3>
         </div>
  
-        <form action="/echo" method="POST">
-        <input name="text">
-        <input type="submit" value="Echo">
-        {% if text %}
-          You said: {{ text }}
-        {% endif %}
-        </form>
+
+        <form action="/get_recommender" method="POST">
+        <input type = "submit" value="find_recommendation">
 
         <select name="option" width="500px">
             {% for o in option_list %}
         <option name="{{ o }}" SELECTED>{{ o }}  </option>
             {% endfor %}
         </select>
+        {{tables | safe}}
+        </form>
         
-        <div class="row marketing">
-            <div class="col-lg-6">
-                <h4>Bucket List</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
- 
-                <h4>Bucket List</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
- 
-                <h4>Bucket List</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-            </div>
- 
-            <div class="col-lg-6">
-                <h4>Bucket List</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
- 
-                <h4>Bucket List</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
- 
-                <h4>Bucket List</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-            </div>
-        </div>
- 
+       
         <footer class="footer">
-            <p>&copy; Company 2015</p>
+            <p>Andy Yao Aug 7th 2017</p>
         </footer>
  
     </div>
