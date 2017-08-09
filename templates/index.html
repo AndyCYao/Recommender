@@ -8,7 +8,27 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
- 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+    <script type=text/javascript>
+        $(function(){
+            alert("Hello, in JS5");
+            $("#dropdown").change(function(){
+                var selectedID = $("#dropdown option:selected").text();
+                
+                $.ajax({
+                    type: "POST",
+                    url: '/get_recommender',
+                    data: selectedID,
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function(data){
+                        //alert("Success: " + data);
+                        $("#result").html(data);
+                    }
+                });
+                
+            });
+        });
+    </script>
  
 </head>
  
@@ -18,29 +38,25 @@
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a>
-                    </li>
-                    <li role="presentation"><a href="#">Sign In</a>
-                    </li>
-                    <li role="presentation"><a href="showSignUp">Sign Up</a>
+                    <li role="presentation" class="active"><a href="/">Home</a>
                     </li>
                 </ul>
             </nav>
             <h3 class="text-muted">Python Recommender Engine</h3>
         </div>
- 
+    
 
         <form action="/get_recommender" method="POST">
         <input type = "submit" value="find_recommendation">
 
-        <select name="option" width="500px">
+        <select id = "dropdown" name="option" width="500px">
             {% for o in option_list %}
         <option name="{{ o }}" SELECTED>{{ o }}  </option>
             {% endfor %}
         </select>
         {{tables | safe}}
         </form>
-        
+        <span id=result></span>
        
         <footer class="footer">
             <p>Andy Yao Aug 7th 2017</p>
