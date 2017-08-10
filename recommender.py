@@ -102,6 +102,16 @@ class Recommender:
 		                                                           regularization = 0.1,
 		                                                           iterations = 50)
 
+	def getPurchased_Items(self, customer_id):
+	    '''
+	    AY modified - i only want to see a descending list of the most popular item a user has purchased
+	    '''
+	    filteredData = self.retail_data[self.retail_data["CustomerID"] == int(customer_id)]
+	    filteredData = filteredData[["StockCode", "Description", "Quantity"]]
+	    result = filteredData.groupby(["StockCode", "Description"]).sum()
+	    
+	    return result.sort_values(by="Quantity", ascending = False)[:10].to_html()		
+
 	def getRec_Items(self, customer_id):
 		customers_arr = np.array(self.customers)
 		products_arr = np.array(self.products)

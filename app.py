@@ -11,24 +11,23 @@ def main():
 	return render_template('index.html', 
 					       option_list=reader_list)
 
-@app.route("/TestJquery", methods=['POST'])
+@app.route("/get_purchased", methods=['POST'])
 def get_input():
-	print("In TestQuery")
-	# data = request.
-	# return "You Selected {}".format(data)
-	pass 
-
+	customerID = request.data
+	if(customerID != ''):
+		actualPurchased_list = rcmdr.getPurchased_Items(customerID)
+		return actualPurchased_list
+	
 @app.route("/get_recommender", methods=['POST'])
 def get_recommender():
 	customerID = request.data
-	print("customer ID is {} type is {}".format(customerID, type(customerID)))
+	# print("customer ID is {} type is {}".format(customerID, type(customerID)))
 	if(customerID != ''):
 		recommended_list = rcmdr.getRec_Items(customerID)
+		# actualPurchased_list = rcmdr.getPurchased_Items(customerID)
 		return recommended_list
-		#return render_template('index.html', tables=[recommended_list])
 	else:
 		return "Please Try Again"
-		#return render_template('index.html', message = "Please Try Again")
 
 if __name__ == '__main__':
 	app.run(debug = True)

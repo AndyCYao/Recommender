@@ -11,7 +11,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
     <script type=text/javascript>
         $(function(){
-            alert("Hello, in JS5");
+            //alert("Hello, in JS6");
             $("#dropdown").change(function(){
                 var selectedID = $("#dropdown option:selected").text();
                 
@@ -20,9 +20,20 @@
                     url: '/get_recommender',
                     data: selectedID,
                     contentType: 'application/json;charset=UTF-8',
-                    success: function(data){
-                        //alert("Success: " + data);
-                        $("#result").html(data);
+                    success: function(recommended){
+                        //alert("Success: " + recommended);
+                        $("#result").html(recommended);
+                        //$("#actuallyBought").html(purchased);
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: '/get_purchased',
+                    data: selectedID,
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function(purchased){
+                        $("#actuallyBought").html(purchased);
                     }
                 });
                 
@@ -44,10 +55,6 @@
             </nav>
             <h3 class="text-muted">Python Recommender Engine</h3>
         </div>
-    
-
-        <form action="/get_recommender" method="POST">
-        <input type = "submit" value="find_recommendation">
 
         <select id = "dropdown" name="option" width="500px">
             {% for o in option_list %}
@@ -56,8 +63,11 @@
         </select>
         {{tables | safe}}
         </form>
+        <h4>Customer Selected</h4>
+        <span id=actuallyBought></span>
+        <h4>Recommends</h4>
         <span id=result></span>
-       
+        
         <footer class="footer">
             <p>Andy Yao Aug 7th 2017</p>
         </footer>
