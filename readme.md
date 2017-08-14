@@ -38,3 +38,4 @@ pip install -r requirements.txt
 [How to set up flask on AWS](http://amunategui.github.io/idea-to-pitch/#installing-flask)
 [Collaborative Filtering for - Hu, Koren, Volinsky](http://yifanhu.net/PUB/cf.pdf)
 [A Gentle Introduction to Recommender Systems with Implicit Feedback](https://jessesw.com/Rec-System/)
+
