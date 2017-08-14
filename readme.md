@@ -10,7 +10,13 @@ You can select the customer based on their customer ID. The first table is what 
 
 ## Getting Started
 
-TBA
+With Flask installed, simply run 
+
+'''python
+python app.py 
+'''
+
+and see the home page on your default page (defaults to 127.0.0.1:5000)
 
 ### Prerequisites
 
@@ -23,15 +29,9 @@ flask
 implicit 
 
 
-
 ```python
 pip install -r requirements.txt
 ```
-
-### Installing
-
-TBA
-
 
 ## Guides / References
 
