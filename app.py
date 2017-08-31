@@ -7,6 +7,7 @@ rcmdr= recommender.Recommender()
 @app.route('/')
 def main():
 	reader_list = rcmdr.getListOfReaders()
+	# reader_list = ["Hello" , "World"]
 	# print(reader_list)
 	return render_template('index.html', 
 					       option_list=reader_list)
@@ -20,6 +21,7 @@ def get_input():
 	
 @app.route("/get_recommender", methods=['POST'])
 def get_recommender():
+
 	customerID = request.data
 	# print("customer ID is {} type is {}".format(customerID, type(customerID)))
 	if(customerID != ''):
@@ -30,4 +32,6 @@ def get_recommender():
 		return "Please Try Again"
 
 if __name__ == '__main__':
-	app.run(debug = True)
+	# app.run(debug = True)
+	app.run()
+

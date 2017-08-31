@@ -10,7 +10,7 @@ class Recommender:
 	
 	def __init__(self):
 		
-		self.website_url = 'OnlineRetail.xlsx'	
+		self.website_url = '/var/www/FlaskApps/Recommender/OnlineRetail.xlsx'	
 		self.retail_data = pd.read_excel(self.website_url) # This may take a couple minutes
 
 		# Data clean up
