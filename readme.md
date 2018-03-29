@@ -1,8 +1,8 @@
 # Python Recommender App
 
-This is a recommender system that uses a customer's purchase history to recommend items to them.
-
-You can select the customer based on their customer ID. The first table is what they have purchased base on purchase quantity, and the second table is what the recommender outputs. 
+This is a recommender system that recommends products to customers based on their purchase histories.
+## How to use
+Select a customer ID from the drop-down list to show the customer's purchase history  and recommended products.
 
 ![Quick Look](Demonstrate.gif)
 
